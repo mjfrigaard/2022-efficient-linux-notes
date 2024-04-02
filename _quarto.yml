@@ -1,0 +1,35 @@
+project:
+  title: "2022-efficient-linux-notes"
+
+editor: source
+
+format:
+  html:
+    code-block-bg: "#f8f8f8"
+    code-block-border-left: "#99bbc9"
+    toc: true
+    toc-depth: 4
+    toc-expand: true
+    toc-title: Contents
+    toc-location: right
+    embed-resources: true
+    dpi: 320
+    df-print: kable
+    fig-format: retina
+    fig-asp: 0.618
+    fontsize: 1.085em
+    linestretch: 1.25
+    fig-width: 7
+    fig-height: 5
+    
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#> "
+    message: false
+    warning: false
+    
+execute: 
+  eval: true
+  freeze: true
+  
