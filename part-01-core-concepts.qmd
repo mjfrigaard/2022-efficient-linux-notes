@@ -1,0 +1,60 @@
+---
+title: "Part 1: Core Concepts"
+subtitle: "Notes and worked examples from 'Efficient Linux at the Command Line'"
+knitr:
+  opts_chunk: 
+    collapse: true
+    comment: "#"
+    echo: true
+    eval: true
+---
+
+## Input, output, pipes
+
+The introduction covers `stdin` and `stdout`, how to combine these commands with `ls`, `less`, and the pipe (`|`):
+
+> __`stdin`__: The stream of input that Linux reads from your keyboard.
+>
+> __`stdout`__: The stream of output that Linux writes to your display. 
+
+```{bash}
+ls -l ex/ch01
+```
+
+In the `ex/ch01/command_1_wc` folder, you'll see `myfile`. If we run `less` on `myfile`, we see the file displayed one screenful at a time:
+
+```{bash}
+less ex/ch01/command_1_wc/myfile
+```
+
+## Combining Commands 
+
+> "*You can connect the `stdout` of one command to the `stdin` of another, so the first command feeds the second.*"
+
+We can connect `ls -l` and `less` using the pipe: 
+
+```{bash}
+ls -l ex/ch01/command_1_wc | less
+```
+
+List the contents of a large directory with `ls -l`, then pass this to `less` to make it more human readable.
+
+> "*You can connect these two commands because `ls` writes to `stdout` and `less` can read from `stdin`.*"
+
+This chapter covers an intro to six common Linux commands: 
+
+```{bash}
+pwd
+```
+
+```{bash}
+whoami
+```
+
+## The Shell
+
+## Variables 
+
+## Re-running Commands 
+
+## Filesystem

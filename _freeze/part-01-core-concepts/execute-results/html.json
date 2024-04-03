@@ -1,0 +1,15 @@
+{
+  "hash": "326314f3ae6713ac63bf214b6e5f2c45",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Part 1: Core Concepts\"\nsubtitle: \"Notes and worked examples from 'Efficient Linux at the Command Line'\"\nknitr:\n  opts_chunk: \n    collapse: true\n    comment: \"#\"\n    echo: true\n    eval: true\n---\n\n\n## Input, output, pipes\n\nThe introduction covers `stdin` and `stdout`, how to combine these commands with `ls`, `less`, and the pipe (`|`):\n\n> __`stdin`__: The stream of input that Linux reads from your keyboard.\n>\n> __`stdout`__: The stream of output that Linux writes to your display. \n\n\n::: {.cell}\n\n```{.bash .cell-code}\nls -l ex/ch01\n# total 8\n# -rw-rw-r--@  1 mjfrigaard  staff  172 Oct 25 18:13 README.md\n# drwxrwxr-x@  6 mjfrigaard  staff  192 Oct 25 18:13 command_1_wc\n# drwxrwxr-x@  3 mjfrigaard  staff   96 Oct 25 18:13 command_2_head\n# drwxrwxr-x@  3 mjfrigaard  staff   96 Oct 25 18:13 command_3_cut\n# drwxrwxr-x@  4 mjfrigaard  staff  128 Oct 25 18:13 command_4_grep\n# drwxrwxr-x@  3 mjfrigaard  staff   96 Oct 25 18:13 command_5_sort\n# drwxrwxr-x@  4 mjfrigaard  staff  128 Oct 25 18:13 command_6_uniq\n# drwxrwxr-x@ 22 mjfrigaard  staff  704 Oct 25 18:13 detecting_duplicate_files\n# drwxrwxr-x@  3 mjfrigaard  staff   96 Oct 25 18:13 input_output_pipes\n```\n:::\n\n\nIn the `ex/ch01/command_1_wc` folder, you'll see `myfile`. If we run `less` on `myfile`, we see the file displayed one screenful at a time:\n\n\n::: {.cell}\n\n```{.bash .cell-code}\nless ex/ch01/command_1_wc/myfile\n# This is my file\n```\n:::\n\n\n## Combining Commands \n\n> \"*You can connect the `stdout` of one command to the `stdin` of another, so the first command feeds the second.*\"\n\nWe can connect `ls -l` and `less` using the pipe: \n\n\n::: {.cell}\n\n```{.bash .cell-code}\nls -l ex/ch01/command_1_wc | less\n# total 32\n# -rw-rw-r--@ 1 mjfrigaard  staff  325 Oct 25 18:13 animals.txt\n# -rw-rw-r--@ 1 mjfrigaard  staff   16 Oct 25 18:13 myfile\n# -rw-rw-r--@ 1 mjfrigaard  staff   21 Oct 25 18:13 myfile2\n# -rw-rw-r--@ 1 mjfrigaard  staff   31 Oct 25 18:13 test.py\n```\n:::\n\n\nList the contents of a large directory with `ls -l`, then pass this to `less` to make it more human readable.\n\n> \"*You can connect these two commands because `ls` writes to `stdout` and `less` can read from `stdin`.*\"\n\nThis chapter covers an intro to six common Linux commands: \n\n\n::: {.cell}\n\n```{.bash .cell-code}\npwd\n# /Users/mjfrigaard/projects/methods/2022-efficient-linux-notes\n```\n:::\n\n::: {.cell}\n\n```{.bash .cell-code}\nwhoami\n# mjfrigaard\n```\n:::\n\n\n## The Shell\n\n## Variables \n\n## Re-running Commands \n\n## Filesystem",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}

@@ -32,4 +32,5 @@ knitr:
 execute: 
   eval: true
   freeze: true
+  echo: true
   
