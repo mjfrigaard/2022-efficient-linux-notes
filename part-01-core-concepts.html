@@ -3076,7 +3076,19 @@ vertical-align: -.125em;
    
   <ul>
   <li><a href="#input-output-pipes" id="toc-input-output-pipes" class="nav-link active" data-scroll-target="#input-output-pipes">Input, output, pipes</a></li>
+  <li><a href="#commands" id="toc-commands" class="nav-link" data-scroll-target="#commands">Commands</a>
+  <ul>
   <li><a href="#combining-commands" id="toc-combining-commands" class="nav-link" data-scroll-target="#combining-commands">Combining Commands</a></li>
+  <li><a href="#wc" id="toc-wc" class="nav-link" data-scroll-target="#wc"><code>wc</code></a></li>
+  </ul></li>
+  <li><a href="#ls-weirdness" id="toc-ls-weirdness" class="nav-link" data-scroll-target="#ls-weirdness"><code>ls</code> weirdness</a>
+  <ul>
+  <li><a href="#head" id="toc-head" class="nav-link" data-scroll-target="#head"><code>head</code></a></li>
+  <li><a href="#cut" id="toc-cut" class="nav-link" data-scroll-target="#cut"><code>cut</code></a></li>
+  <li><a href="#grep" id="toc-grep" class="nav-link" data-scroll-target="#grep"><code>grep</code></a></li>
+  <li><a href="#sort" id="toc-sort" class="nav-link" data-scroll-target="#sort"><code>sort</code></a></li>
+  <li><a href="#uniq" id="toc-uniq" class="nav-link" data-scroll-target="#uniq"><code>uniq</code></a></li>
+  </ul></li>
   <li><a href="#the-shell" id="toc-the-shell" class="nav-link" data-scroll-target="#the-shell">The Shell</a></li>
   <li><a href="#variables" id="toc-variables" class="nav-link" data-scroll-target="#variables">Variables</a></li>
   <li><a href="#re-running-commands" id="toc-re-running-commands" class="nav-link" data-scroll-target="#re-running-commands">Re-running Commands</a></li>
@@ -3132,8 +3144,14 @@ vertical-align: -.125em;
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># This is my file</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
-<section id="combining-commands" class="level2">
-<h2 class="anchored" data-anchor-id="combining-commands">Combining Commands</h2>
+<section id="commands" class="level2">
+<h2 class="anchored" data-anchor-id="commands">Commands</h2>
+<p>This section has a great definition and description of <strong>commands</strong> in Linux:</p>
+<p><strong>A program</strong>: An executable program named and executed by a single word, such as <code>ls</code>, or a similar feature built into the shell, such as cd (called a shell builtin)</p>
+<p><strong>A simple command</strong>: A program name (or shell builtin) optionally followed by arguments, such as <code>ls -l /bin</code></p>
+<p><strong>A combined command</strong>: Several simple commands treated as a unit, such as the pipeline <code>ls -l /bin | less</code></p>
+<section id="combining-commands" class="level3">
+<h3 class="anchored" data-anchor-id="combining-commands">Combining Commands</h3>
 <blockquote class="blockquote">
 <p>“<em>You can connect the <code>stdout</code> of one command to the <code>stdin</code> of another, so the first command feeds the second.</em>”</p>
 </blockquote>
@@ -3150,15 +3168,66 @@ vertical-align: -.125em;
 <blockquote class="blockquote">
 <p>“<em>You can connect these two commands because <code>ls</code> writes to <code>stdout</code> and <code>less</code> can read from <code>stdin</code>.</em>”</p>
 </blockquote>
-<p>This chapter covers an intro to six common Linux commands:</p>
+<p>This chapter covers an intro to six common Linux commands: <code>wc</code>, <code>head</code>, <code>cut</code>, <code>grep</code>, <code>sort</code>, and <code>uniq</code></p>
+</section>
+<section id="wc" class="level3">
+<h3 class="anchored" data-anchor-id="wc"><code>wc</code></h3>
+<blockquote class="blockquote">
+<p>“<em>options <code>-l</code>, <code>-w</code>, and <code>-c</code> print only the number of lines, words, and characters</em>”</p>
+</blockquote>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="bu">pwd</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co"># /Users/mjfrigaard/projects/methods/2022-efficient-linux-notes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> ex/ch01/command_1_wc/animals.txt</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="co">#        7      51     325 ex/ch01/command_1_wc/animals.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">whoami</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># mjfrigaard</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-l</span> ex/ch01/command_1_wc/animals.txt</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#        7 ex/ch01/command_1_wc/animals.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-w</span> ex/ch01/command_1_wc/animals.txt</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="co">#       51 ex/ch01/command_1_wc/animals.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> <span class="at">-c</span> ex/ch01/command_1_wc/animals.txt</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="co">#      325 ex/ch01/command_1_wc/animals.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="ls-weirdness" class="level2">
+<h2 class="anchored" data-anchor-id="ls-weirdness"><code>ls</code> weirdness</h2>
+<p>The <code>ls</code> command will change it’s behavior depending on <code>stdout</code> and <code>stdin</code></p>
+<p>If the <code>stdout</code> is redirected (like with <code>cat</code>), then</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ex/ch01 <span class="kw">|</span> <span class="fu">cat</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># README.md</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co"># command_1_wc</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co"># command_2_head</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># command_3_cut</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a><span class="co"># command_4_grep</span></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="co"># command_5_sort</span></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="co"># command_6_uniq</span></span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># detecting_duplicate_files</span></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># input_output_pipes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<section id="head" class="level3">
+<h3 class="anchored" data-anchor-id="head"><code>head</code></h3>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> ex/ch01/command_1_wc/animals.txt</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#        7      51     325 ex/ch01/command_1_wc/animals.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="cut" class="level3">
+<h3 class="anchored" data-anchor-id="cut"><code>cut</code></h3>
+</section>
+<section id="grep" class="level3">
+<h3 class="anchored" data-anchor-id="grep"><code>grep</code></h3>
+</section>
+<section id="sort" class="level3">
+<h3 class="anchored" data-anchor-id="sort"><code>sort</code></h3>
+</section>
+<section id="uniq" class="level3">
+<h3 class="anchored" data-anchor-id="uniq"><code>uniq</code></h3>
+</section>
 </section>
 <section id="the-shell" class="level2">
 <h2 class="anchored" data-anchor-id="the-shell">The Shell</h2>

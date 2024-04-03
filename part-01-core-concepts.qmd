@@ -1,6 +1,7 @@
 ---
 title: "Part 1: Core Concepts"
 subtitle: "Notes and worked examples from 'Efficient Linux at the Command Line'"
+# format: markdown_github
 knitr:
   opts_chunk: 
     collapse: true
@@ -13,9 +14,9 @@ knitr:
 
 The introduction covers `stdin` and `stdout`, how to combine these commands with `ls`, `less`, and the pipe (`|`):
 
-> __`stdin`__: The stream of input that Linux reads from your keyboard.
+> **`stdin`**: The stream of input that Linux reads from your keyboard.
 >
-> __`stdout`__: The stream of output that Linux writes to your display. 
+> **`stdout`**: The stream of output that Linux writes to your display. 
 
 ```{bash}
 ls -l ex/ch01
@@ -27,7 +28,17 @@ In the `ex/ch01/command_1_wc` folder, you'll see `myfile`. If we run `less` on `
 less ex/ch01/command_1_wc/myfile
 ```
 
-## Combining Commands 
+## Commands 
+
+This section has a great definition and description of **commands** in Linux: 
+
+**A program**: An executable program named and executed by a single word, such as `ls`, or a similar feature built into the shell, such as cd (called a shell builtin)
+
+**A simple command**: A program name (or shell builtin) optionally followed by arguments, such as `ls -l /bin`
+
+**A combined command**: Several simple commands treated as a unit, such as the pipeline `ls -l /bin | less`
+
+### Combining Commands 
 
 > "*You can connect the `stdout` of one command to the `stdin` of another, so the first command feeds the second.*"
 
@@ -41,15 +52,52 @@ List the contents of a large directory with `ls -l`, then pass this to `less` to
 
 > "*You can connect these two commands because `ls` writes to `stdout` and `less` can read from `stdin`.*"
 
-This chapter covers an intro to six common Linux commands: 
+This chapter covers an intro to six common Linux commands: `wc`, `head`, `cut`, `grep`, `sort`, and `uniq`
+
+### `wc`
+
+> "*options `-l`, `-w`, and `-c` print only the number of lines, words, and characters*"
 
 ```{bash}
-pwd
+wc ex/ch01/command_1_wc/animals.txt
 ```
 
 ```{bash}
-whoami
+wc -l ex/ch01/command_1_wc/animals.txt
 ```
+
+```{bash}
+wc -w ex/ch01/command_1_wc/animals.txt
+```
+
+```{bash}
+wc -c ex/ch01/command_1_wc/animals.txt
+```
+
+## `ls` weirdness
+
+The `ls` command will change it's behavior depending on `stdout` and `stdin`
+
+If the `stdout` is redirected (like with `cat`), then 
+
+```{bash}
+ls ex/ch01 | cat
+```
+
+### `head`
+
+```{bash}
+wc ex/ch01/command_1_wc/animals.txt
+```
+
+### `cut`
+
+### `grep`
+
+### `sort`
+
+### `uniq`
+
 
 ## The Shell
 
