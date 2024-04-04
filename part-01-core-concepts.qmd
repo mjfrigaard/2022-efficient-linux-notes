@@ -16,7 +16,7 @@ The introduction covers `stdin` and `stdout`, how to combine these commands with
 
 > **`stdin`**: The stream of input that Linux reads from your keyboard.
 >
-> **`stdout`**: The stream of output that Linux writes to your display. 
+> **`stdout`**: The stream of output that Linux writes to your display.
 
 ```{bash}
 ls -l ex/ch01
@@ -28,9 +28,9 @@ In the `ex/ch01/command_1_wc` folder, you'll see `myfile`. If we run `less` on `
 less ex/ch01/command_1_wc/myfile
 ```
 
-## Commands 
+## Commands
 
-This section has a great definition and description of **commands** in Linux: 
+This section has a great definition and description of **commands** in Linux:
 
 **A program**: An executable program named and executed by a single word, such as `ls`, or a similar feature built into the shell, such as cd (called a shell builtin)
 
@@ -38,11 +38,11 @@ This section has a great definition and description of **commands** in Linux:
 
 **A combined command**: Several simple commands treated as a unit, such as the pipeline `ls -l /bin | less`
 
-### Combining Commands 
+### Combining Commands
 
 > "*You can connect the `stdout` of one command to the `stdin` of another, so the first command feeds the second.*"
 
-We can connect `ls -l` and `less` using the pipe: 
+We can connect `ls -l` and `less` using the pipe:
 
 ```{bash}
 ls -l ex/ch01/command_1_wc | less
@@ -78,13 +78,25 @@ wc -c ex/ch01/command_1_wc/animals.txt
 
 The `ls` command will change it's behavior depending on `stdout` and `stdin`
 
-If the `stdout` is redirected (like with `cat`), then 
+If the `stdout` is redirected (like with `cat`), then the output is a column:
 
 ```{bash}
 ls ex/ch01 | cat
 ```
 
+Keep this in mind when passing commands to `ls`.
+
+```{bash}
+ls ex/ch01 | wc -l
+```
+
+The command above reports the `wc` for the files in `ex/ch01` *returned* from `ls`.
+
+> "*`ls` has options to override its default behavior. Force `ls` to print a single column with the `-1` option, or force multiple columns with the `-C` option.*"
+
 ### `head`
+
+Head will return the
 
 ```{bash}
 wc ex/ch01/command_1_wc/animals.txt
@@ -98,11 +110,10 @@ wc ex/ch01/command_1_wc/animals.txt
 
 ### `uniq`
 
-
 ## The Shell
 
-## Variables 
+## Variables
 
-## Re-running Commands 
+## Re-running Commands
 
 ## Filesystem

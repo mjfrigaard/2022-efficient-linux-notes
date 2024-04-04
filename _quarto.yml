@@ -2,6 +2,7 @@ project:
   title: "2022-efficient-linux-notes"
 
 editor: source
+jupyter: python3
 
 format:
   html:

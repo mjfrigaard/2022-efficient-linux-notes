@@ -3196,7 +3196,7 @@ vertical-align: -.125em;
 <section id="ls-weirdness" class="level2">
 <h2 class="anchored" data-anchor-id="ls-weirdness"><code>ls</code> weirdness</h2>
 <p>The <code>ls</code> command will change it’s behavior depending on <code>stdout</code> and <code>stdin</code></p>
-<p>If the <code>stdout</code> is redirected (like with <code>cat</code>), then</p>
+<p>If the <code>stdout</code> is redirected (like with <code>cat</code>), then the output is a column:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ex/ch01 <span class="kw">|</span> <span class="fu">cat</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co"># README.md</span></span>
@@ -3209,11 +3209,21 @@ vertical-align: -.125em;
 <span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a><span class="co"># detecting_duplicate_files</span></span>
 <span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># input_output_pipes</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
+<p>Keep this in mind when passing commands to <code>ls</code>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ls</span> ex/ch01 <span class="kw">|</span> <span class="fu">wc</span> <span class="at">-l</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#        9</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The command above reports the <code>wc</code> for the files in <code>ex/ch01</code> <em>returned</em> from <code>ls</code>.</p>
+<blockquote class="blockquote">
+<p>“<em><code>ls</code> has options to override its default behavior. Force <code>ls</code> to print a single column with the <code>-1</code> option, or force multiple columns with the <code>-C</code> option.</em>”</p>
+</blockquote>
 <section id="head" class="level3">
 <h3 class="anchored" data-anchor-id="head"><code>head</code></h3>
+<p>Head will return the</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> ex/ch01/command_1_wc/animals.txt</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="co">#        7      51     325 ex/ch01/command_1_wc/animals.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">wc</span> ex/ch01/command_1_wc/animals.txt</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="co">#        7      51     325 ex/ch01/command_1_wc/animals.txt</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="cut" class="level3">
